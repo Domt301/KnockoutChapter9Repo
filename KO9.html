@@ -1,75 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Yet Another Shopping Cart</title>
-        </head>
-        <body>
 
-<h1>Click on a category<h2>
+<head>
+    <title>Yet Another Shopping Cart</title>
+</head>
 
-<div style="float: left; width: 50%">
-    <ul>
-        <!-- ko foreach: categories -->
-<li><a href="#" data-bind="click: $parent.showProducts, text: name"></a></li>
+<body>
 
-        <!-- /ko --> 
-    </ul>
+    <h1>Click on a category
+        <h2>
 
+            <div style="float: left; width: 50%">
+                <ul>
+                    <!-- ko foreach: categories -->
+                    <li>
+                        <a href="#" data-bind="click: $parent.showProducts, text: name"></a>
+                    </li>
 
-    <ul>
- <!-- ko foreach: availableProducts -->
-<li>
-<!-- ko template: {name: 'item-template', data: $data}  -->
-  <!-- /ko --> 
-<p><button data-bind="click: $parent.addItem">Add to cart</button></p>
-</li>
-    <!-- /ko --> 
+                    <!-- /ko -->
+                </ul>
 
-    </ul>
-</div>
+                slight change here
+                <ul>
+                    <!-- ko foreach: availableProducts -->
+                    <li>
+                        <!-- ko template: {name: 'item-template', data: $data}  -->
+                        <!-- /ko -->
+                        <p><button data-bind="click: $parent.addItem">Add to cart</button></p>
+                    </li>
+                    <!-- /ko -->
 
-<div style="float: left; width: 50%">
-<h1>Items in cart: <span data-bind="text: cartItems().length"></span></h1>
+                </ul>
+            </div>
 
-<ul>
- <!-- ko foreach: {data: cartItems, afterAdd: fadeIn, beforeRemove: fadeOut } -->
+            <div style="float: left; width: 50%">
+                <h1>Items in cart: <span data-bind="text: cartItems().length"></span></h1>
 
-<li>
+                <ul>
+                    <!-- ko foreach: {data: cartItems, afterAdd: fadeIn, beforeRemove: fadeOut } -->
 
-<!-- ko template: {name: 'item-template', data: $data}  -->
-<!-- /ko -->
-<p><button data-bind="click: $parent.removeItem">Remove</button></p>
-</li>
-<!-- /ko -->
-</ul>    
+                    <li>
 
-
-
-
-             
-<h3>Total: $<span data-bind="text: cartTotal"></span></h3>             
-</div>            
-<script type="text/html" id="item-template">
-<h2 data-bind="text: getTitle()"></h2>
-<p data-bind="html: getDescription()"></p>
-<p>Price : $<span data-bind="text: price"></span></p>
+                        <!-- ko template: {name: 'item-template', data: $data}  -->
+                        <!-- /ko -->
+                        <p><button data-bind="click: $parent.removeItem">Remove</button></p>
+                    </li>
+                    <!-- /ko -->
+                </ul>
 
 
 
 
-</script>
-<script   src="https://code.jquery.com/jquery-3.1.0.js" ></script>
-<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js" ></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.js"></script>
+
+                <h3>Total: $<span data-bind="text: cartTotal"></span></h3>
+            </div>
+            <script type="text/html" id="item-template">
+                <h2 data-bind="text: getTitle()"></h2>
+                <p data-bind="html: getDescription()"></p>
+                <p>Price : $<span data-bind="text: price"></span></p>
 
 
-<script type="text/javascript" src="javascript/classes.js"></script>
-<script type="text/javascript" src="javascript/data.js"></script>
-<script type="text/javascript" src="javascript/viewmodel.js"></script>
 
-<script>
-   var viewModel = new ViewModel(categories);
-   ko.applyBindings(viewModel);
-        </script>
-   </body>
-    </html>
+
+            </script>
+            <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+            <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.js"></script>
+
+
+            <script type="text/javascript" src="javascript/classes.js"></script>
+            <script type="text/javascript" src="javascript/data.js"></script>
+            <script type="text/javascript" src="javascript/viewmodel.js"></script>
+
+            <script>
+                var viewModel = new ViewModel(categories);
+                ko.applyBindings(viewModel);
+            </script>
+</body>
+
+</html>
